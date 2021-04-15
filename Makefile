@@ -18,23 +18,23 @@ build: ## docker-compose up
 .PHONY: start
 start: ## setup and build containers
 	@ echo "Creating and Starting services"
-	make setup build
+	@ $(MAKE) setup
+	@ $(MAKE) build
 
 .PHONY: stop
 stop: ## stop and destroy services
 	@ echo "Removing services"
-	docker-compose down && \
-	docker-compose rm -svf
+	docker-compose down
 
-.PHONY: run-code-w
-run-code: ## Run main.py in Windows Git-Bash
-	@ echo "Running"
-	winpty docker exec -it docker-agent bash -c "python /usr/src/app/pipeline/main.py"
+.PHONY: run-code-windows
+run-code-w: ## Run main.py in Windows Git-Bash
+	@ echo "Running python main"
+	winpty docker exec -it docker-agent bash -c "python /usr/src/app/src/main.py"
 
-.PHONY: run-code-l
-run-code: ## Run main.py in Unix System
+.PHONY: run-code-linux
+run-code-l: ## Run main.py in Unix System
 	@ echo "Running"
-	docker exec -it docker-agent bash -c "python /usr/src/app/pipeline/main.py"
+	docker exec -it docker-agent bash -c "python /usr/src/app/src/main.py"
 
 help: ## display this help message
 	@ echo "Please use \`make <target>' where <target> is one of"

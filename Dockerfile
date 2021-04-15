@@ -19,4 +19,4 @@ COPY ./requirements.txt $APP_HOME/requirements.txt
 
 WORKDIR $APP_HOME
 
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && rm requirements.txt

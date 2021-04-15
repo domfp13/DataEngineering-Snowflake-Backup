@@ -131,3 +131,6 @@ dmypy.json
 target/
 dbt_modules/
 logs/
+
+# vscode
+.vscode/

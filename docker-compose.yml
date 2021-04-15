@@ -10,8 +10,6 @@ networks:
         - subnet: ${NETWORK_SUBNET}
 
 services:
-
-  # dbt runner
   app:
     image: dbt-runner:latest
     container_name: docker-agent
@@ -27,4 +25,5 @@ services:
     tty: true
     restart: always
     volumes:
-      - ./src:/usr/src/app
+      - ./src:/usr/src/app/src
+      - ./data:/usr/src/app/data
